@@ -4,9 +4,11 @@ const reset = document.getElementById("reset");
 
 reset.addEventListener("click", () => {
     let newSize = parseInt(prompt("How many squares would you like on one size?"));
-    while (newSize == NaN) {
+    while (newSize == NaN && newSize < 100) {
         newSize = parseInt(prompt("How many squares would you like on one size?"));
     }
+    //delete old grid function here
+
     //create grid function here
     createGrid(newSize);
 });
@@ -19,7 +21,9 @@ function createGrid(size) {
             let pixel = document.createElement("div");
             pixel.className = "pixel";
             row.appendChild(pixel);
+            pixel.addEventListener("mouseover", draw());
         }
     }
 }
+
 createGrid(16);
