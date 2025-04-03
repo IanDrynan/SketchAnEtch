@@ -1,5 +1,5 @@
-const container = document.getElementById("container");
-const menu = document.getElementById("menu");
+const content = document.getElementById("content");
+const header = document.getElementById("header");
 const reset = document.getElementById("reset");
 
 reset.addEventListener("click", () => {
@@ -8,11 +8,18 @@ reset.addEventListener("click", () => {
         newSize = parseInt(prompt("How many squares would you like on one size?"));
     }
     //delete old grid function here
-
+    deleteGrid();
     //create grid function here
     createGrid(newSize);
 });
+function deleteGrid() {
+    container.remove();
+}
 function createGrid(size) {
+    let container = document.createElement("div");
+    container.id = "container";
+    content.appendChild(container);
+
     for (let i = 0; i < size; i++) {
         let row = document.createElement("div");
         row.className = "row";
