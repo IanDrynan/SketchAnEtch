@@ -20,10 +20,18 @@ function createGrid(size) {
         for (let j = 0; j < size; j++) {
             let pixel = document.createElement("div");
             pixel.className = "pixel";
+            pixel.addEventListener("mouseover", draw);
             row.appendChild(pixel);
-            pixel.addEventListener("mouseover", draw());
         }
     }
 }
-
+function draw() {
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    this.style.backgroundColor = '#' + randomColor;
+    let opacity = parseFloat(this.style.opacity);
+    console.log(opacity);
+    if (!opacity || opacity < 1) {
+        this.style.opacity = opacity ? opacity + 0.1 : .1;
+    }
+}
 createGrid(16);
