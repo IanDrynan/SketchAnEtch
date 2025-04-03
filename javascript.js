@@ -2,12 +2,24 @@ const container = document.getElementById("container");
 const menu = document.getElementById("menu");
 const reset = document.getElementById("reset");
 
-let gridSize = 16;
-
 reset.addEventListener("click", () => {
-    let newSize = parseInt(prompt("How many squares would you like on one size?", "16"));
+    let newSize = parseInt(prompt("How many squares would you like on one size?"));
     while (newSize == NaN) {
-        newSize = parseInt(prompt("How many squares would you like on one size?", "16"));
+        newSize = parseInt(prompt("How many squares would you like on one size?"));
     }
+    //create grid function here
+    createGrid(newSize);
 });
-function
+function createGrid(size) {
+    for (let i = 0; i < size; i++) {
+        let row = document.createElement("div");
+        row.className = "row";
+        container.appendChild(row);
+        for (let j = 0; j < size; j++) {
+            let pixel = document.createElement("div");
+            pixel.className = "pixel";
+            row.appendChild(pixel);
+        }
+    }
+}
+createGrid(16);
